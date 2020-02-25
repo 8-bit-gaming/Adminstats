@@ -23,7 +23,7 @@ final class Settings {
         $driver = 'mysql';
 
         // Server name, shown on the main page and on the header
-        $this->name = 'LiteBans';
+        $this->name = '8-Bit-Gaming';
 
         // Clicking on the header name will send you to this address.
         // $this->name_link = 'https://example.com';
@@ -33,7 +33,7 @@ final class Settings {
         // Bootstrap 4 themes have four sets of colors: primary, secondary, light and dark.
         // Navbar classes: navbar-light, navbar-dark, bg-primary, bg-secondary, bg-light, bg-dark
         // Badge (label) classes: badge, badge-pill, badge-primary, badge-secondary, badge-light, badge-dark
-        $this->navbar_classes = 'navbar-dark bg-primary';
+        $this->navbar_classes = 'navbar-dark bg-dark';
         $this->badge_classes = 'badge-pill badge-secondary';
         $this->info_badge_classes = 'badge';
 
