@@ -62,6 +62,13 @@ XF::start($dir);
 $app = XF::setupApp('XF\Pub\App');
 $app->start();
 $visitor = \XF::visitor();
+
+// If it's an admin header, it's staff only.
+// Block any outsiders
+if ($admin_header && !$visitor->is_staff) {
+  header('Location: ' . $settings->name_link);
+  return die();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
