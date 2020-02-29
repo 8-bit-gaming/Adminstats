@@ -199,3 +199,18 @@ tr.hover {
 .noalign-h {
     height: 0;
 }
+
+/* Even more CUSTOM */
+.auth {
+  margin-right: 10px;
+}
+
+p.auth {
+  display: inline-block;
+  margin: 0 10px 0 0;
+}
+
+a small {
+  padding-left: 2px;
+  font-size: 10px;
+}

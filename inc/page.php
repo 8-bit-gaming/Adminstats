@@ -2,7 +2,7 @@
 require_once __DIR__ . '/init.php';
 
 class Page {
-    public function __construct($name, $header = true) {
+    public function __construct($name, $header = true, $admin = false) {
 //        ini_set('mbstring.internal_encoding', 'UTF-8');
         ini_set('default_charset', 'utf-8');
         require_once __DIR__ . '/settings.php';
@@ -70,7 +70,7 @@ class Page {
         if ($header) {
             $h = new Header($this);
             $this->header = $h;
-            $h->print_header();
+            $h->print_header($admin);
         }
         $this->table_headers_printed = false;
     }

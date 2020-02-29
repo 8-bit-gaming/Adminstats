@@ -52,8 +52,16 @@ function navbar($links) {
     echo '</ul>';
 }
 
-function print_header() {
+function print_header($admin_header = false) {
 $settings = $this->page->settings;
+
+$dir = __DIR__ . '/../..';
+require($dir . '/src/XF.php');
+
+XF::start($dir);
+$app = XF::setupApp('XF\Pub\App');
+$app->start();
+$visitor = \XF::visitor();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -82,7 +90,10 @@ $settings = $this->page->settings;
     <div class="navbar navbar-expand-lg fixed-top <?php echo $settings->navbar_classes; ?>">
         <div class="container">
             <a class="navbar-brand" href="<?php echo $settings->name_link; ?>">
-                <?php echo $settings->name; ?>
+                <?php
+                  echo $settings->name;
+                  if ($admin_header) { echo "<small>Staff</small>"; }
+                ?>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#litebans-navbar"
                     aria-controls="litebans-navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -91,18 +102,42 @@ $settings = $this->page->settings;
 
             <div class="collapse navbar-collapse" id="litebans-navbar">
                 <?php
-                $this->navbar(array(
-                    "index.php"    => $this->page->t("title.index"),
-                    "bans.php"     => $this->page->t("title.bans"),
-                    "mutes.php"    => $this->page->t("title.mutes"),
-                    "warnings.php" => $this->page->t("title.warnings"),
-                    "kicks.php"    => $this->page->t("title.kicks"),
-                ));
+                  if ($admin_header) {
+                    $navbarOptions = array(
+                      "index.php" => $this->page->t('title.index'),
+                      "users.php" => $this->page->t('title.admin.all_users'),
+                      "punish.php" => $this->page->t('title.admin.punish_user'),
+                      "stats.php" => $this->page->t('title.admin.stats')
+
+                    );
+                  } else {
+                    $navbarOptions = array(
+                        "index.php"    => $this->page->t("title.index"),
+                        "bans.php"     => $this->page->t("title.bans"),
+                        "mutes.php"    => $this->page->t("title.mutes"),
+                        "warnings.php" => $this->page->t("title.warnings"),
+                        "kicks.php"    => $this->page->t("title.kicks"),
+                    );
+                  }
+
+                  if ($visitor->is_staff && !$admin_header) {
+                    $navbarOptions['admin/index.php'] = '<font style="color: #e74c3c">' . $this->page->t('title.admin') . '</font>';
+                  }
+
+                  $this->navbar($navbarOptions);
+
+                  if (!$visitor->user_id) {
                 ?>
-                <ul class="nav navbar-nav my-2 my-lg-0">
-                    <a href="https://www.spigotmc.org/resources/litebans.3715/"
-                       target="_blank">&copy; LiteBans</a>
-                </ul>
+                <span>
+                  <a href="/index.php?login" id="login" role="button" class="btn auth btn-primary">Login</a>
+                </span>
+                <?php
+                  } else {
+                ?>
+                <span>
+                  <p class="auth"> Logged in as <? echo $visitor->username ?> </p>
+                </span>
+                <?php } ?>
             </div>
         </div>
 </header>

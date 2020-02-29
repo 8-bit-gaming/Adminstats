@@ -4,7 +4,7 @@ class DefaultLang {
     public function __construct() {
         $array = array();
         $this->array = &$array;
-        $array["index.welcome.main"] = "Welcome to {server}'s Ban List.";
+        $array["index.welcome.main"] = "Welcome to {server}'s Rapsheet.";
         $array["index.welcome.sub"] = "Here is where all of our punishments are listed.";
 
         $array["title.index"] = 'Home';
@@ -14,6 +14,13 @@ class DefaultLang {
         $array["title.kicks"] = 'Kicks';
         $array["title.player-history"] = "Recent Punishments for {name}";
         $array["title.staff-history"] = "Recent Punishments by {name}";
+
+        $array["index.welcome.admin"] = "{server}'s Staff Panel";
+        $array["index.welcome.admin.sub"] = "Here is where you can perform various actions";
+        $array["title.admin"] = "Staff Area";
+        $array["title.admin.all_users"] = "All Users";
+        $array["title.admin.punish_user"] = "Punish User";
+        $array["title.admin.stats"] = "Stats";
 
 
         $array["generic.ban"] = "Ban";
