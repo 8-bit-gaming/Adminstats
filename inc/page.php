@@ -575,7 +575,7 @@ class Page {
     }
 
     function autoversion($file) {
-        return "$file?" . filemtime($file);
+        return $this->settings->root_path . "$file?" . filemtime(__DIR__ . '/../' . $file);
     }
 
     function table_begin() {

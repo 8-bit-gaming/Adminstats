@@ -25,9 +25,11 @@ final class Settings {
         // Server name, shown on the main page and on the header
         $this->name = '8-Bit-Gaming';
 
+        // The root of the files, ie: '', 'https://example.com', '/dir'
+        $this->root_path = '/acp';
+
         // Clicking on the header name will send you to this address.
-        // $this->name_link = 'https://example.com';
-        $this->name_link = 'index.php';
+        $this->name_link = $this->root_path . '/index.php';
 
         // Here you can customize colors for the Bootstrap 4 theme that you are using.
         // Bootstrap 4 themes have four sets of colors: primary, secondary, light and dark.

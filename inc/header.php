@@ -62,11 +62,11 @@ $settings = $this->page->settings;
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="LiteBans">
-    <link href="<?php echo $this->page->autoversion('inc/img/favicon.ico'); ?>" rel="shortcut icon">
+    <link href="<?php echo $this->page->autoversion('/inc/img/favicon.ico'); ?>" rel="shortcut icon">
     <!-- CSS -->
-    <link href="<?php echo $this->page->autoversion('inc/css/bootstrap.min.css'); ?>" rel="stylesheet">
-    <link href="<?php echo $this->page->autoversion('inc/css/glyphicons.min.css'); ?>" rel="stylesheet">
-    <link href="<?php echo $this->page->autoversion('inc/css/custom.css'); ?>" rel="stylesheet">
+    <link href="<?php echo $this->page->autoversion('/inc/css/bootstrap.min.css'); ?>" rel="stylesheet">
+    <link href="<?php echo $this->page->autoversion('/inc/css/glyphicons.min.css'); ?>" rel="stylesheet">
+    <link href="<?php echo $this->page->autoversion('/inc/css/custom.css'); ?>" rel="stylesheet">
     <script type="text/javascript">
         function withjQuery(tries, f) {
             if (window.jQuery) f();
