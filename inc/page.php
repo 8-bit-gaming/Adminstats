@@ -1,18 +1,18 @@
 <?php
-require_once './inc/init.php';
+require_once __DIR__ . '/init.php';
 
 class Page {
     public function __construct($name, $header = true) {
 //        ini_set('mbstring.internal_encoding', 'UTF-8');
         ini_set('default_charset', 'utf-8');
-        require_once './inc/settings.php';
+        require_once __DIR__ . '/settings.php';
         $settings = new Settings();
         setlocale(LC_ALL, $settings->lang);
 
-        require_once './lang/en_US.utf8.php';
+        require_once __DIR__ . '/../lang/en_US.utf8.php';
         $this->defaultlang = new DefaultLang();
 
-        require_once './lang/' . $settings->lang . '.php';
+        require_once __DIR__ . '/../lang/' . $settings->lang . '.php';
         if (class_exists("Lang")) {
             $this->lang = new Lang();
         } else {
@@ -21,7 +21,7 @@ class Page {
 
         $this->time = microtime(true);
         if ($header) {
-            require_once './inc/header.php';
+            require_once __DIR__ . '/header.php';
         }
         $this->conn = $settings->conn;
         $this->settings = $settings;
@@ -571,7 +571,7 @@ class Page {
         $time = microtime(true) - $this->time;
         echo "<!-- Page generated in $time seconds. -->";
 
-        include_once './inc/footer.php';
+        include_once __DIR__ . '/footer.php';
     }
 
     function autoversion($file) {
