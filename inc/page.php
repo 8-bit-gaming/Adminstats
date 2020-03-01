@@ -269,7 +269,7 @@ class Page {
         }
         if (array_key_exists($uuid, $this->uuid_name_cache)) return $this->uuid_name_cache[$uuid];
 
-        $result = null;
+        $result = '<b>ERROR: Failed to grab player name, contact devs</b>';
         $table = $this->settings->table['history']; // Not user input
 
         $stmt = $this->conn->prepare("SELECT name FROM $table WHERE uuid=:uuid ORDER BY date DESC LIMIT 1");
