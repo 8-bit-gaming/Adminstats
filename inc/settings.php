@@ -3,7 +3,7 @@
 final class Settings {
     public static $TRUE = "1", $FALSE = "0";
 
-    public function __construct($connect = true) {
+    public function __construct($connect = true, $admin = false) {
         // Web interface language. Languages are stored in the "lang/" directory.
         $this->lang = 'en_US.utf8';
 
@@ -15,6 +15,8 @@ final class Settings {
 
         $username = '';
         $password = '';
+
+        $this->admin = $admin;
 
         // If you set a table prefix in config.yml, set it here as well
         $this->table_prefix = "litebans_";

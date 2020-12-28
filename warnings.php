@@ -1,7 +1,7 @@
 <?php
 require_once './inc/page.php';
 
-$page = new Page("warnings");
+$page = new Page("warnings", true, true, false);
 
 $page->print_title();
 $page->print_header();

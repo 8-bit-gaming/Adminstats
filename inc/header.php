@@ -65,7 +65,7 @@ $visitor = \XF::visitor();
 
 // If it's an admin header, it's staff only.
 // Block any outsiders
-if ($admin_header && !$visitor->is_staff) {
+if ($settings->admin && !$visitor->is_staff) {
   header('Location: ' . $settings->name_link);
   return die();
 }
@@ -121,10 +121,18 @@ if ($admin_header && !$visitor->is_staff) {
                     $navbarOptions = array(
                         "index.php"    => $this->page->t("title.index"),
                         "bans.php"     => $this->page->t("title.bans"),
-                        "mutes.php"    => $this->page->t("title.mutes"),
-                        "warnings.php" => $this->page->t("title.warnings"),
-                        "kicks.php"    => $this->page->t("title.kicks"),
                     );
+
+                    if ($visitor->is_staff) {
+                      $navbarOptions = array_merge(
+                        $navbarOptions,
+                        array(
+                          "mutes.php"    => $this->page->t("title.mutes"),
+                          "warnings.php" => $this->page->t("title.warnings"),
+                          "kicks.php"    => $this->page->t("title.kicks"),
+                        )
+                      );
+                    }
                   }
 
                   if ($visitor->is_staff && !$admin_header) {

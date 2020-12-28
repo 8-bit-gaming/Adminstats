@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/../inc/page.php';
 
-$page = new Page("index", true, true);
+$page = new Page("index", true, true, true);
 $page->print_title();
 ?>
 <br>
